@@ -1,0 +1,234 @@
+AntiTdl - Il Master Boot Record ?pulito.
+viragt: \DosDevices\PhysicalDrive0
+AntiTdl - Il Master Boot Record ?pulito.
+viragt: \DosDevices\PhysicalDrive0
+
+*** Fatal System Error: 0x0000000a
+                       (0x00000000,0x00000002,0x00000001,0x840B6499)
+
+Break instruction exception - code 80000003 (first chance)
+
+A fatal system error has occurred.
+Debugger entered on first try; Bugcheck callbacks have not been invoked.
+
+A fatal system error has occurred.
+
+*********************************************************************
+* Symbols can not be loaded because symbol path is not initialized. *
+*                                                                   *
+* The Symbol Path can be set by:                                    *
+*   using the _NT_SYMBOL_PATH environment variable.                 *
+*   using the -y <symbol_path> argument when starting the debugger. *
+*   using .sympath and .sympath+                                    *
+*********************************************************************
+*** ERROR: Module load completed but symbols could not be loaded for ntdll.dll
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+Use !analyze -v to get detailed debugging information.
+
+BugCheck A, {0, 2, 1, 840b6499}
+
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for halmacpi.dll - 
+*** ERROR: Module load completed but symbols could not be loaded for VIRAGTLT.SYS
+***** Kernel symbols are WRONG. Please fix symbols to do analysis.
+
+*** ERROR: Module load completed but symbols could not be loaded for mssmbios.sys
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+Probably caused by : VIRAGTLT.SYS ( VIRAGTLT+fae2 )
+
+Followup: MachineOwner
+---------
+
+nt!DbgBreakPointWithStatus+0x4:
+840ba978 cc              int     3
+kd> !analyze -v
+*******************************************************************************
+*                                                                             *
+*                        Bugcheck Analysis                                    *
+*                                                                             *
+*******************************************************************************
+
+IRQL_NOT_LESS_OR_EQUAL (a)
+An attempt was made to access a pageable (or completely invalid) address at an
+interrupt request level (IRQL) that is too high.  This is usually
+caused by drivers using improper addresses.
+If a kernel debugger is available get the stack backtrace.
+Arguments:
+Arg1: 00000000, memory referenced
+Arg2: 00000002, IRQL
+Arg3: 00000001, bitfield :
+	bit 0 : value 0 = read operation, 1 = write operation
+	bit 3 : value 0 = not an execute operation, 1 = execute operation (only on chips which support this level of status)
+Arg4: 840b6499, address which referenced memory
+
+Debugging Details:
+------------------
+
+***** Kernel symbols are WRONG. Please fix symbols to do analysis.
+
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+*************************************************************************
+***                                                                   ***
+***                                                                   ***
+***    Your debugger is not using the correct symbols                 ***
+***                                                                   ***
+***    In order for this command to work properly, your symbol path   ***
+***    must point to .pdb files that have full type information.      ***
+***                                                                   ***
+***    Certain .pdb files (such as the public OS symbols) do not      ***
+***    contain the required information.  Contact the group that      ***
+***    provided you with these symbols if you need this command to    ***
+***    work.                                                          ***
+***                                                                   ***
+***    Type referenced: nt!_KPRCB                                     ***
+***                                                                   ***
+*************************************************************************
+
+ADDITIONAL_DEBUG_TEXT:  
+Use '!findthebuild' command to search for the target build information.
+If the build information is available, run '!findthebuild -s ; .reload' to set symbol path and load symbols.
+
+FAULTING_MODULE: 8403f000 nt
+
+DEBUG_FLR_IMAGE_TIMESTAMP:  59f70351
+
+WRITE_ADDRESS: unable to get nt!MmSpecialPoolStart
+unable to get nt!MmSpecialPoolEnd
+unable to get nt!MmPoolCodeStart
+unable to get nt!MmPoolCodeEnd
+ 00000000 
+
+CURRENT_IRQL:  0
+
+FAULTING_IP: 
+nt!KeWaitForMutexObject+27d
+840b6499 f00fba2807      lock bts dword ptr [eax],7
+
+DEFAULT_BUCKET_ID:  VISTA_DRIVER_FAULT
+
+BUGCHECK_STR:  0xA
+
+LAST_CONTROL_TRANSFER:  from 8411f885 to 840ba978
+
+STACK_TEXT:  
+WARNING: Stack unwind information not available. Following frames may be wrong.
+8ebcc554 8411f885 00000003 00000000 840b6499 nt!DbgBreakPointWithStatus+0x4
+8ebcc91c 8408007f 0000000a 00000000 00000002 nt!KeBugCheckEx+0xc7f
+8ebcc954 8400d924 875f2d20 86cb7800 00000206 nt!Kei386EoiHelper+0x28b7
+8ebcca14 895bfae2 00000000 00000000 00000000 hal!KfRaiseIrql+0xe0
+8ebcca50 895ba4dc 875f2c68 00000000 00000000 VIRAGTLT+0xfae2
+8ebcca90 895b74a4 875aa638 88c15368 88e71d78 VIRAGTLT+0xa4dc
+8ebccacc 895b75c9 875aa638 88c15368 8ebccaf4 VIRAGTLT+0x74a4
+8ebccadc 84076129 875aa638 88c15368 88c15368 VIRAGTLT+0x75c9
+8ebccaf4 8426e5bf 00000000 88c15368 88c153d8 nt!IofCallDriver+0x64
+8ebccb14 8427190e 875aa638 88e71d78 00000000 nt!NtSetEvent+0x2c1
+8ebccbd0 842b8800 0000001c 88c15368 00000000 nt!NtAllocateVirtualMemory+0x328c
+8ebccc04 8407cdc6 0000001c 00000000 00000000 nt!NtDeviceIoControlFile+0x2a
+8ebccc34 770a6bf4 badb0d00 0020f7bc 00000000 nt!ZwYieldExecution+0xb92
+8ebccc38 badb0d00 0020f7bc 00000000 00000000 ntdll+0x46bf4
+8ebccc3c 0020f7bc 00000000 00000000 00000000 0xbadb0d00
+8ebccc40 00000000 00000000 00000000 00000000 0x20f7bc
+
+
+STACK_COMMAND:  kb
+
+FOLLOWUP_IP: 
+VIRAGTLT+fae2
+895bfae2 8b45ec          mov     eax,dword ptr [ebp-14h]
+
+SYMBOL_STACK_INDEX:  4
+
+SYMBOL_NAME:  VIRAGTLT+fae2
+
+FOLLOWUP_NAME:  MachineOwner
+
+MODULE_NAME: VIRAGTLT
+
+IMAGE_NAME:  VIRAGTLT.SYS
+
+BUCKET_ID:  WRONG_SYMBOLS
+
+Followup: MachineOwner
+---------
